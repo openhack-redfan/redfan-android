@@ -1,5 +1,6 @@
 package redfen.redfanapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +23,7 @@ public class IntroActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(IntroActivity.this, MainActivity.class));
+                startActivity(new Intent(IntroActivity.this, LoginActivity.class));
             }
         },2000);
 
