@@ -40,7 +40,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
             android:hint="Email@gmail.com"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:padding="10dp"/>
 
         <EditText
             android:id="@+id/inputPassword"
@@ -48,7 +49,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:hint="Password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:padding="10dp"/>
 
         <Button
             android:id="@+id/btnLogin"
@@ -56,9 +58,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Login"
-            android:background="@drawable/ButtonBack"
-            android:textColor="@color/colorWhite"
-            android:fontFamily="@font/MyriadArabic-Regular"/>
+            android:textAllCaps="false"
+            android:background="@drawable/btn_back"
+            android:textColor="@color/colorWhite" />
 
         <LinearLayout
             android:layout_width="match_parent"
