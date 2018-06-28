@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+<<<<<<< HEAD
     <style name="CustomTitle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowTitleSize">80dp</item>
         <item name="windowNoTitle">true</item>
@@ -15,4 +16,12 @@
     <style name="CustomWindowTitleBackground">
         <item name="android:background">#ffffff</item>
     </style>
+=======
+
+    <style name="NoTitleBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+>>>>>>> a31ac5577dd804ea4fd2d66ea93a11e923cacb40
 </resources>
