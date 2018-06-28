@@ -1,34 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="redfen.redfanapp.LoginActivity">
+    tools:context="redfen.redfanapp.LoginActivity"
+    android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/inputEmail"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="83dp" />
+        android:orientation="vertical"
+        android:layout_margin="40dp">
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Email@gmail.com"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="20dp"/>
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Password"
+            android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/inputPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="146dp" />
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="202dp" />
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forget Password?"
+                android:paddingLeft="5dp"
+                android:textColor="@color/colorFontRed"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="40dp"
+                android:text="Don't have an account?" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
