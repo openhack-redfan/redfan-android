@@ -10,7 +10,7 @@
     <style name="CustomTitle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorControlActivated">@color/colorFontRed</item>
+        <item name="colorControlActivated">@color/colorRed</item>
     </style>
     <style name="CustomWindowTitleBackground">
         <item name="android:background">#ffffff</item>
