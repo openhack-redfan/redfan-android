@@ -17,4 +17,5 @@
     <color name="colorProgressBarGood">#D65654</color>
     <color name="colorProgressBarBad">#E9E9E9</color>
     <color name="colorFontUpdate">#792020</color>
+    <color name="colorFontComment">#585858</color>
 </resources>
