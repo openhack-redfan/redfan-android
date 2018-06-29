@@ -1,13 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="redfen.redfanapp.DetailActivity">
 
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:onClick="onBackClick"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/back_btn_img"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/detail_title" />
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/goodcommentlist"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@color/colorWhite">
+    </ListView>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/img_up"
+        android:layout_marginBottom="10dp"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/img_down"/>
+
+    <ListView
+        android:id="@+id/badcommentlist"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="@color/colorWhite">
+    </ListView>
 
 
-</android.support.constraint.ConstraintLayout>
+
+</LinearLayout>
