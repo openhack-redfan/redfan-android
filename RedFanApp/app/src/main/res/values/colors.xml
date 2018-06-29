@@ -6,6 +6,9 @@
     <color name="colorRed">#ED3737</color>
     <color name="colorFontRed">#990000</color>
     <color name="colorWhite">#FFFFFF</color>
-
-    <color name="colorBackOfTotalView">#E25757</color>
+    <color name="colorBlackFont">#333333</color>
+    <color name="colorManBlue">#1EAED7</color>
+    <color name="colorWomanYellow">#F5E04D</color>
+    <color name="colorGenderRatioGray">#A5A5A5</color>
+    <color name="colorBackOfTotalView">#FF7171</color>
 </resources>

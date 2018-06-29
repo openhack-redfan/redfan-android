@@ -69,8 +69,8 @@ public class LoginActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        /*Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(goToMain);*/
+        Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(goToMain);
     }
 
 

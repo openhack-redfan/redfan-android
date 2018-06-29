@@ -19,7 +19,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     private Fragment curFragment = new Fragment();
 
     private Fragment totalViewFragment1 = new TotalViewFragment().setData("100K views");
-    private Fragment totalViewFragment2 = new TotalViewFragment().setData("1000k views");
+    private Fragment genderViewFragment2 = new GenderViewFragment();
 
     public PageAdapter(FragmentManager fm) {
         super(fm);
@@ -32,7 +32,7 @@ public class PageAdapter extends FragmentPagerAdapter {
                 curFragment = totalViewFragment1;
                 break;
             case 1:
-                curFragment = totalViewFragment2;
+                curFragment = genderViewFragment2;
                 break;
             default:
                 return null;
