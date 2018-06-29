@@ -27,16 +27,11 @@ public class IntroActivity extends AppCompatActivity {
 
         // 처음 실행될 경우
         // 1. 인트로를 보여준다.
-        // 2. SharedPreference 에서 isFirstLaunch를 false 로 수정한다.
         if (isFirstLaunch){
             // 1번
             mViewPager = (ViewPager)findViewById(R.id.viewpager);
             mViewPager.setAdapter(new IntoAdapter(getSupportFragmentManager()));
             mViewPager.setPageTransformer(false, new IntroTransformer());
-            // 2번
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putBoolean("isFirstLaunch", false);
-            editor.commit();
         }
         // 처음 실행되는 것이 아닌경우
         // 1. 바로 로그인 액티비티로 넘어간다.

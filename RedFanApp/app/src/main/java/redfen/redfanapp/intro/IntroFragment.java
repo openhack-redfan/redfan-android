@@ -1,7 +1,10 @@
 package redfen.redfanapp.intro;
 
 import android.app.Activity;
+import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -63,6 +66,12 @@ public class IntroFragment extends Fragment {
         mStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 2번
+                SharedPreferences pref = getActivity().getSharedPreferences("load", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("isFirstLaunch", false);
+                editor.commit();
+
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             }
