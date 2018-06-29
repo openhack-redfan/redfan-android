@@ -1,5 +1,7 @@
 package redfen.redfanapp.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * 채널에 대한 데이터를 가지고 있는 객체입니다.
  * @member
@@ -19,38 +21,22 @@ package redfen.redfanapp.model;
 
 public class Channel {
 
-    private String channelId;
-    private String channelName;
-    private int channelThumb;
-    private String channelUrl;
-    private String channelDetail;
-    private int numOfSubscriber;
-    private int numOfLover;
-    private int numOfView;
-    private int numOfVideo;
-    private String datePublished;
-    private String dateCrawled;
 
-    public String getChannelId() {return channelId;}
-    public void setChannelId(String channelId) {this.channelId = channelId;}
-    public String getChannelName() {return channelName;}
-    public void setChannelName(String channelName) {this.channelName = channelName;}
-    public int getChannelThumb() {return channelThumb;}
-    public void setChannelThumb(int channelThumb) {this.channelThumb = channelThumb;}
-    public String getChannelUrl() {return channelUrl;}
-    public void setChannelUrl(String channelUrl) {this.channelUrl = channelUrl;}
-    public String getChannelDetail() {return channelDetail;}
-    public void setChannelDetail(String channelDetail) {this.channelDetail = channelDetail;}
-    public int getNumOfSubscriber() {return numOfSubscriber;}
-    public void setNumOfSubscriber(int numOfSubscriber) {this.numOfSubscriber = numOfSubscriber;}
-    public int getNumOfLover() {return numOfLover;}
-    public void setNumOfLover(int numOfLover) {this.numOfLover = numOfLover;}
-    public int getNumOfView() {return numOfView;}
-    public void setNumOfView(int numOfView) {this.numOfView = numOfView;}
-    public int getNumOfVideo() {return numOfVideo;}
-    public void setNumOfVideo(int numOfVideo) {this.numOfVideo = numOfVideo;}
-    public String getDatePublished() {return datePublished;}
-    public void setDatePublished(String datePublished) {this.datePublished = datePublished;}
-    public String getDateCrawled() {return dateCrawled;}
-    public void setDateCrawled(String dateCrawled) {this.dateCrawled = dateCrawled;}
+    public String channelId;
+    public String channelName;
+    public int channelThumbs;
+    public String channelUrl;
+    public String channelDetail;
+    @SerializedName("channelSubscriberCount")
+    public int numOfSubscriber;
+    public int numOfLover;
+    @SerializedName("channelViewCount")
+    public int numOfView;
+    @SerializedName("channelVideoCount")
+    public int numOfVideo;
+    @SerializedName("channelPublishedAt")
+    public String datePublished;
+    @SerializedName("channelCrawledAt")
+    public String dateCrawled;
+
 }
