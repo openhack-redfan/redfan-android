@@ -1,8 +1,11 @@
 package redfen.redfanapp.pager;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 /**
  * Created by start on 2018-06-29.
@@ -39,4 +42,5 @@ public class PageAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return size;
     }
+
 }

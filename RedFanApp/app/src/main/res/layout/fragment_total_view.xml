@@ -10,7 +10,8 @@
         android:id="@+id/imgTotal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/img_1k" />
+        app:srcCompat="@drawable/img_1k"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/txtTotal"
@@ -26,9 +27,9 @@
         android:paddingBottom="15dp"
 
         android:text="100k views"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:textSize="25dp"
+        android:textStyle="italic"
         android:typeface="sans" />
 
 </RelativeLayout>

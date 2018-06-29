@@ -40,7 +40,9 @@
             android:layout_marginBottom="20dp"
             android:hint="Email@gmail.com"
             android:inputType="textEmailAddress"
-            android:padding="10dp" />
+            android:paddingLeft="10dp"
+            android:cursorVisible="false"
+            android:textSize="16sp"/>
 
         <EditText
             android:id="@+id/inputPassword"
@@ -49,7 +51,9 @@
             android:layout_gravity="center"
             android:hint="Password"
             android:inputType="textPassword"
-            android:padding="10dp" />
+            android:paddingLeft="10dp"
+            android:cursorVisible="false"
+            android:textSize="16sp"/>
 
         <Button
             android:id="@+id/btnLogin"
@@ -62,6 +66,7 @@
             android:background="@drawable/btn_back"
             android:textColor="@color/colorWhite"
             android:layout_marginTop="15dp"
+            android:textSize="16sp"
             android:textStyle="normal"/>
 
         <LinearLayout
@@ -74,14 +79,16 @@
                 android:layout_height="wrap_content"
                 android:text="Forget Password? "
                 android:textColor="@color/colorFontRed"
-                android:textStyle="normal"/>
+                android:textStyle="normal"
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/onLoginRegisterClick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account?"
-                android:textStyle="normal"/>
+                android:textStyle="normal"
+                android:textSize="12sp"/>
         </LinearLayout>
     </LinearLayout>
 
