@@ -95,8 +95,10 @@ public class MainActivity extends AppCompatActivity {
                         ArrayList<Video> videos = new ArrayList<>(); // 컨트롤러를 위한
                         ArrayList<VideoItem> videoItems = new ArrayList<>(); // 리스트뷰를 위한
 
-                        for (int i = 0; i < resultObj.length(); i++){
+                        for (int i = 0; i < objArray.length(); i++){
+
                             // 비디오 추가
+                            System.out.println(i+ "::"+objArray.get(i).toString());
                             Video video = new  Gson().fromJson(objArray.get(i).toString(), Video.class);
                             VideoController.getInstance().addVideo(video);
                             videos.add(video);
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
                         // 리스트뷰에 비디오 추가
                         adapter.setItemList(videoItems);
                         listView.setAdapter(adapter);
+                        System.out.printf("from Size:%d, ItemList size: %d, Model List Size: %d\n", objArray.length(), videoItems.size(), videos.size());
 
                     } catch (JSONException e) {
                         e.printStackTrace();

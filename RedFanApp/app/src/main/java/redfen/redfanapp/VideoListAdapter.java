@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,6 +40,8 @@ public class VideoListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private ArrayList<VideoItem> itemList;
     private int layout;
+    private Bitmap downloadedBitmap;
+    private ImageView thumbnail;
     public VideoListAdapter(Context context, int layout, ArrayList<VideoItem> itemList){
         this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.itemList = itemList;
@@ -72,7 +76,7 @@ public class VideoListAdapter extends BaseAdapter {
         }
         final VideoItem listviewitem = itemList.get(position);
 
-        final ImageView thumbnail = (ImageView) convertView.findViewById(R.id.imgThumbnail);
+        thumbnail = (ImageView) convertView.findViewById(R.id.imgThumbnail);
         TextView title = (TextView) convertView.findViewById(R.id.txtVideoTitle);
         TextView percent = (TextView) convertView.findViewById(R.id.txtPercent);
         final ProgressBar progressBar = ((ProgressBar) convertView.findViewById(R.id.barPercent));
@@ -89,7 +93,9 @@ public class VideoListAdapter extends BaseAdapter {
                     InputStream is = conn.getInputStream();
                     Bitmap bitmap = BitmapFactory.decodeStream(is);
                     is.close();
-                    thumbnail.setImageBitmap(bitmap);
+                    downloadedBitmap = bitmap;
+                    Message changeMsg = changeHandler.obtainMessage();
+                    changeHandler.sendMessage(changeMsg);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -128,4 +134,11 @@ public class VideoListAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+    private Handler changeHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            thumbnail.setImageBitmap(downloadedBitmap);
+        }
+    };
 }
