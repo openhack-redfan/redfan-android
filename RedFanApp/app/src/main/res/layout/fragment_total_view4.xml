@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackOfChannelInfo"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/channelinfo_title"
+        android:id="@+id/imageView3" />
+    <TextView
+        android:id="@+id/update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="*Update : 2018. 06. 02"
+        android:textColor="@color/colorFontUpdate"
+        app:font="custom3"
+        tools:ignore="MissingPrefix"
+        android:padding="10dp"/>
+
+    <ImageView
+        android:id="@+id/channel_thumnail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/channel_thumnail_sample"/>
+    <TextView
+        android:id="@+id/creater_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Creater"
+        android:textColor="@color/colorWhite"
+        app:font="custom3"
+        tools:ignore="MissingPrefix"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:layout_margin="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            app:font="custom3"
+            tools:ignore="MissingPrefix"
+            android:text="Experence the world of google on our Official Youtube Channel."
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Opened : 2005. 9. 18."
+                android:textColor="@color/colorWhite"
+                app:font="custom3"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Sub : 6,395,353"
+                android:textColor="@color/colorWhite"
+                app:font="custom3"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="Video : 5,303"
+                android:textColor="@color/colorWhite"
+                app:font="custom3"
+                tools:ignore="MissingPrefix" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

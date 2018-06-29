@@ -15,12 +15,13 @@ import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
-    private final int size = 3; // page 의 개수를 수동으로 조정
+    private final int size = 4; // page 의 개수를 수동으로 조정
     private Fragment curFragment = new Fragment();
 
-    private Fragment totalViewFragment1 = new TotalViewFragment().setData("100K views");
-    private Fragment genderViewFragment2 = new GenderViewFragment();
-    private Fragment fanViewFragment3 = new FanViewFragment();
+    private Fragment channelinfoFragment1 = new ChannelInfoFragment();
+    private Fragment totalViewFragment2 = new TotalViewFragment().setData("100K views");
+    private Fragment genderViewFragment3 = new GenderViewFragment();
+    private Fragment fanViewFragment4 = new FanViewFragment();
 
     public PageAdapter(FragmentManager fm) {
         super(fm);
@@ -30,13 +31,16 @@ public class PageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                curFragment = totalViewFragment1;
+                curFragment = channelinfoFragment1;
                 break;
             case 1:
-                curFragment = genderViewFragment2;
+                curFragment = totalViewFragment2;
                 break;
             case 2:
-                curFragment = fanViewFragment3;
+                curFragment = genderViewFragment3;
+                break;
+            case 3:
+                curFragment = fanViewFragment4;
                 break;
             default:
                 return null;
