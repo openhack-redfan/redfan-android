@@ -15,6 +15,9 @@ import com.tsengvn.typekit.TypekitContextWrapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import redfen.redfanapp.server_connector.RequestCallback;
+import redfen.redfanapp.server_connector.ServerConnector;
+
 /**
  * 회원가입을 위한 액티비티 입니다.
  */
