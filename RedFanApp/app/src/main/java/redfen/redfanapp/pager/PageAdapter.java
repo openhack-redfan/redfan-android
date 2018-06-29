@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import redfen.redfanapp.model.Channel;
+import redfen.redfanapp.model_controller.ChannelController;
 
 /**
  * 메인 뷰에 있는 페이지 슬라이더를 위한 어뎁터입니다.
@@ -64,8 +65,12 @@ public class PageAdapter extends FragmentPagerAdapter {
         return size;
     }
 
-    public void sendChannelInfo(Channel channel){
-        mChannel = channel;
+    public void signalChannelLoad(){
+        Channel channel = ChannelController.getInstance().getChannel();
+        ((IUseChannelData)channelinfoFragment1).refreshChannelData(channel);
+        ((IUseChannelData)totalViewFragment2).refreshChannelData(channel);
+        ((IUseChannelData)genderViewFragment3).refreshChannelData(channel);
+        ((IUseChannelData)fanViewFragment4).refreshChannelData(channel);
     }
 
 }

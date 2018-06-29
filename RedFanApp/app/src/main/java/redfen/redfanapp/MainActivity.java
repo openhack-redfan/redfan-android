@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private ListView listView;
     private VideoListAdapter adapter;
+    private PageAdapter pageAdapter;
 
 
     @Override
@@ -54,14 +55,19 @@ public class MainActivity extends AppCompatActivity {
             this.finish();
         }
 
+        // 뷰 페이지 슬라이더 등록
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
+        pageAdapter = new PageAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(pageAdapter);
 
+        // 리스트에 기본 데이터
         listView = (ListView) findViewById(R.id.videoListView);
         ArrayList<VideoItem> list = new ArrayList<>();
         list.add(new VideoItem("null", "hi", 10, 10));
         adapter = new VideoListAdapter(this, R.layout.listitem_video, list);
         listView.setAdapter(adapter);
+
+        // 리스트 아이템  클릭 리스너
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -71,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        // 다운로드
         JSONObject mainObj = new JSONObject();
         try {
             mainObj.put("userId", Account.getInstance().getEmail());
@@ -113,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                         adapter.setItemList(videoItems);
                         listView.setAdapter(adapter);
                         System.out.printf("from Size:%d, ItemList size: %d, Model List Size: %d\n", objArray.length(), videoItems.size(), videos.size());
+
+                        pageAdapter.signalChannelLoad();
 
                     } catch (JSONException e) {
                         e.printStackTrace();

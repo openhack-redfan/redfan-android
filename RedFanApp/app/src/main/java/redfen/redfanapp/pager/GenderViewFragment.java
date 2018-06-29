@@ -10,12 +10,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import redfen.redfanapp.R;
+import redfen.redfanapp.model.Channel;
 
 /**
  * Created by skrud on 2018-06-30.
  */
 
-public class GenderViewFragment extends Fragment {
+public class GenderViewFragment extends Fragment implements IUseChannelData{
 
     public GenderViewFragment(){super();}
 
@@ -26,5 +27,10 @@ public class GenderViewFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_total_view2,null);
 
         return v;
+    }
+
+    @Override
+    public void refreshChannelData(Channel channel) {
+
     }
 }

@@ -15,12 +15,13 @@ import com.tsengvn.typekit.TypekitContextWrapper;
 import java.util.concurrent.TimeoutException;
 
 import redfen.redfanapp.R;
+import redfen.redfanapp.model.Channel;
 
 /**
  * Created by start on 2018-06-29.
  */
 
-public class TotalViewFragment extends Fragment {
+public class TotalViewFragment extends Fragment implements IUseChannelData{
 
     public TotalViewFragment(){
         super();
@@ -42,4 +43,8 @@ public class TotalViewFragment extends Fragment {
     }
 
 
+    @Override
+    public void refreshChannelData(Channel channel) {
+
+    }
 }
