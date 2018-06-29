@@ -1,4 +1,4 @@
-package redfen.redfanapp;
+package redfen.redfanapp.model;
 
 /**
  * 앱 내에서의 계정정보를 가지고 있는 객체
