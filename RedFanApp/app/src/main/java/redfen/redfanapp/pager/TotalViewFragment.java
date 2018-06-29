@@ -23,6 +23,8 @@ import redfen.redfanapp.model.Channel;
 
 public class TotalViewFragment extends Fragment implements IUseChannelData{
 
+    private TextView txtTotalView;
+
     public TotalViewFragment(){
         super();
     }
@@ -39,12 +41,19 @@ public class TotalViewFragment extends Fragment implements IUseChannelData{
 
         View v = inflater.inflate(R.layout.fragment_total_view,null);
 
+        txtTotalView = (TextView) v.findViewById(R.id.total_view);
+
         return v;
     }
 
 
     @Override
     public void refreshChannelData(Channel channel) {
-
+        int numOfView = channel.numOfView;
+        int M = numOfView / 1000000;
+        int K = numOfView / 1000;
+        if (M > 0) txtTotalView.setText(M+"M");
+        else if (K > 0) txtTotalView.setText(K+"K");
+        else txtTotalView.setText(numOfView);
     }
 }
