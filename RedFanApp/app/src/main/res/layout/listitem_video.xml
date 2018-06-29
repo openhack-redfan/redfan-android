@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -42,40 +43,26 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/wrapper_ballon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
-
                     <ImageView
                         android:id="@+id/imgGap"
                         android:layout_width="10dp"
                         android:layout_height="wrap_content" />
-
-                    <ImageView
-                        android:id="@+id/imgBallon"
-                        android:layout_width="36dp"
-                        android:layout_height="32dp"
-                        android:layout_toRightOf="@id/imgGap"
-                        android:layout_weight="1"
-
-                        app:srcCompat="@drawable/img_percent_ballon" />
-
                     <TextView
                         android:id="@+id/txtPercent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:layout_alignBottom="@id/imgBallon"
-                        android:layout_alignLeft="@id/imgBallon"
-                        android:layout_alignRight="@id/imgBallon"
-                        android:layout_alignTop="@id/imgBallon"
+                        android:layout_width="40dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/img_percent_ballon"
                         android:gravity="center"
-
-                        android:text="0%" />
-
-                </RelativeLayout>
+                        android:text="0%"
+                        android:textColor="@color/colorBackOfTotalView"
+                        app:font="custom1"
+                        tools:ignore="MissingPrefix" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -99,8 +86,8 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:max="100"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:progress="0"
                         android:progressDrawable="@drawable/progressbar_comment" />
 

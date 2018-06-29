@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -67,7 +69,7 @@ public class VideoListAdapter extends BaseAdapter {
         final ImageView thumbnail = (ImageView) convertView.findViewById(R.id.imgThumbnail);
         TextView title = (TextView) convertView.findViewById(R.id.txtVideoTitle);
         TextView percent = (TextView) convertView.findViewById(R.id.txtPercent);
-        ProgressBar progressBar = ((ProgressBar) convertView.findViewById(R.id.barPercent));
+        final ProgressBar progressBar = ((ProgressBar) convertView.findViewById(R.id.barPercent));
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -92,19 +94,34 @@ public class VideoListAdapter extends BaseAdapter {
 
         title.setText(listviewitem.getTitle());
 
-        int percentage = (int)((100.0*listviewitem.getLike())/(listviewitem.getLike() + listviewitem.getUnlike()));
+        final int percentage = (int)((100.0*listviewitem.getLike())/(listviewitem.getLike() + listviewitem.getUnlike()));
         percent.setText(percentage+"%");
-        ImageView imgGap = (ImageView) convertView.findViewById(R.id.imgGap);
+        final ImageView imgGap = (ImageView) convertView.findViewById(R.id.imgGap);
 
-        int base = (int)imgGap.getY();
-        int centerToBase = 0 - ((ImageView) convertView.findViewById(R.id.imgBallon)).getLayoutParams().width/2;
-        int baseToFront = ((ImageView) convertView.findViewById(R.id.imgUp)).getLayoutParams().width;
-        int frontToPercent = (int)(progressBar.getLayoutParams().width/100.0*percentage);
-        System.out.printf("%d %d %d %d\n", base, centerToBase, baseToFront, frontToPercent);
-        imgGap.getLayoutParams().width = base + centerToBase + baseToFront + frontToPercent;
-        imgGap.setLayoutParams(imgGap.getLayoutParams());
 
-        progressBar.setProgress(percentage);
+        ViewTreeObserver vt = progressBar.getViewTreeObserver();
+        if(vt.isAlive()){
+            vt.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    progressBar.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    int default_gap = imgGap.getLayoutParams().width;
+                    int progress_width = progressBar.getWidth();
+
+                    int changed_gap = default_gap + (int)(progress_width*(percentage/100.0));
+
+                    Log.v("width",default_gap+" "+progress_width+" "+changed_gap+" "+percentage);
+
+                    imgGap.getLayoutParams().width = changed_gap;
+                    imgGap.setLayoutParams(imgGap.getLayoutParams());
+
+                    progressBar.setProgress(percentage);
+                }
+            });
+        }
+
+
+
         return convertView;
     }
 }
