@@ -1,8 +1,6 @@
-package redfen.redfanapp;
+package redfen.redfanapp.server_connector;
 
 import android.os.AsyncTask;
-
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,8 +9,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
 
 /**
  * 서버와 통신하는 클래스. 싱글톤 패턴으로 객체를 제공한다.
@@ -45,6 +41,8 @@ public class ServerConnector {
                 try {
                     endpoint = new URL(url);
                     conn = (HttpURLConnection) endpoint.openConnection();
+                    conn.setConnectTimeout(1500);
+                    conn.setReadTimeout(1500);
                     if (conn.getResponseCode() == 200){ // 네트워크 연결에 성공했을 경우
 
                         // 인풋 가져옴
@@ -90,6 +88,8 @@ public class ServerConnector {
                 try {
                     endpoint = new URL(url);
                     conn = (HttpURLConnection) endpoint.openConnection();
+                    conn.setConnectTimeout(1500);
+                    conn.setReadTimeout(1500);
                     conn.setRequestProperty("Content-type", "application/json");
                     conn.setRequestMethod("POST");
                     conn.setDoOutput(true);
