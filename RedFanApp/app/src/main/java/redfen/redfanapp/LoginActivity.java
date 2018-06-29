@@ -3,6 +3,8 @@ package redfen.redfanapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tsengvn.typekit.Typekit;
 import com.tsengvn.typekit.TypekitContextWrapper;
@@ -71,6 +74,12 @@ public class LoginActivity extends AppCompatActivity {
                             Account.getInstance().setAuthorized(true);
                             Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(goToMain);
+                            Message successMessage = successHandler.obtainMessage();
+                            successHandler.sendMessage(successMessage);
+                        }
+                        else {
+                            Message fail = failHandler.obtainMessage();
+                            failHandler.sendMessage(fail);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -83,6 +92,22 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+    // 스레드에서는 토스트와 같은 UI를 띄우는 것이 불가능하기 때문에
+    // 핸들러를 만들어 해결 토스트를 띄운다.
+    // 참조 : https://www.androidpub.com/861367
+    final AppCompatActivity mother = this;
+    private Handler successHandler = new Handler() {
+        public void handleMessage(Message msg){
+            Toast.makeText(mother, "login success!", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private Handler failHandler = new Handler() {
+        public void handleMessage(Message msg){
+            Toast.makeText(mother, "login fail!", Toast.LENGTH_SHORT).show();
+        }
+    };
 
 
     @Override
