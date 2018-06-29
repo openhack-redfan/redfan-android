@@ -16,6 +16,7 @@ import java.util.concurrent.TimeoutException;
 
 import redfen.redfanapp.R;
 import redfen.redfanapp.model.Channel;
+import redfen.redfanapp.model_controller.ChannelController;
 
 /**
  * Created by start on 2018-06-29.
@@ -42,6 +43,7 @@ public class TotalViewFragment extends Fragment implements IUseChannelData{
         View v = inflater.inflate(R.layout.fragment_total_view,null);
 
         txtTotalView = (TextView) v.findViewById(R.id.total_view);
+        refreshChannelData(ChannelController.getInstance().getChannel());
 
         return v;
     }
@@ -49,11 +51,15 @@ public class TotalViewFragment extends Fragment implements IUseChannelData{
 
     @Override
     public void refreshChannelData(Channel channel) {
-        int numOfView = channel.numOfView;
+        if (txtTotalView != null)
+            setTextTotalView(channel.numOfView);
+    }
+
+    private void setTextTotalView(int numOfView){
         int M = numOfView / 1000000;
         int K = numOfView / 1000;
         if (M > 0) txtTotalView.setText(M+"M");
         else if (K > 0) txtTotalView.setText(K+"K");
-        else txtTotalView.setText(numOfView);
+        else txtTotalView.setText(Integer.toString(numOfView));
     }
 }

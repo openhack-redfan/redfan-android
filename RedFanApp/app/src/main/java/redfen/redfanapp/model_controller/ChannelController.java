@@ -16,7 +16,7 @@ public class ChannelController {
         return instance;
     }
 
-    private Channel channel; // 로드된 채널에 대한 정보
+    private Channel channel = new Channel(); // 로드된 채널에 대한 정보
     private boolean isLoaded = false; // 채널이 로드 되었는지 알려주는 플래그
 
     public Channel getChannel() {return channel;}

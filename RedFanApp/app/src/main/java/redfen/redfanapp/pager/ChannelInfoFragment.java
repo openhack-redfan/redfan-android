@@ -25,6 +25,7 @@ import javax.net.ssl.HttpsURLConnection;
 import redfen.redfanapp.R;
 import redfen.redfanapp.VideoItem;
 import redfen.redfanapp.model.Channel;
+import redfen.redfanapp.model_controller.ChannelController;
 
 /**
  * Created by skrud on 2018-06-30.
@@ -55,19 +56,28 @@ public class ChannelInfoFragment extends Fragment implements IUseChannelData{
         txtOpenedDate = (TextView) v.findViewById(R.id.channel_opened);
         txtNumSubscriber = (TextView) v.findViewById(R.id.channel_sub);
         txtNumVideo = (TextView) v.findViewById(R.id.channel_videonum);
+        refreshChannelData(ChannelController.getInstance().getChannel());
 
         return v;
     }
 
     @Override
     public void refreshChannelData(final Channel channel) {
-        txtCralwedDate.setText(channel.dateCrawled.substring(0, 10));
-        txtChannelName.setText(channel.channelName);
-        txtChannelDesc.setText(channel.channelDetail);
-        txtOpenedDate.setText(channel.datePublished.substring(0, 10));
-        txtNumSubscriber.setText(Integer.toString(channel.numOfSubscriber));
-        txtNumVideo.setText(Integer.toString(channel.numOfVideo));
+        if (channel == null) return;
+        if (txtCralwedDate != null && channel.dateCrawled != null)
+            txtCralwedDate.setText(channel.dateCrawled.substring(0, 10));
+        if (txtCralwedDate != null && channel.channelName != null)
+            txtChannelName.setText(channel.channelName);
+        if (txtCralwedDate != null && channel.channelDetail != null)
+            txtChannelDesc.setText(channel.channelDetail);
+        if (txtCralwedDate != null && channel.datePublished != null)
+            txtOpenedDate.setText(channel.datePublished.substring(0, 10));
+        if (txtNumSubscriber != null)
+            txtNumSubscriber.setText(Integer.toString(channel.numOfSubscriber));
+        if (txtNumVideo != null)
+            txtNumVideo.setText(Integer.toString(channel.numOfVideo));
 
+        if (channel.channelThumbs != null)
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
