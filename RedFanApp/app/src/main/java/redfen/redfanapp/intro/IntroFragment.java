@@ -88,8 +88,11 @@ public class IntroFragment extends Fragment {
                     mImageView.setImageDrawable(getResources().getDrawable(R.drawable.intro2));
                     break;
                 //3p
-                default:
+                case 2:
                     mImageView.setImageDrawable(getResources().getDrawable(R.drawable.intro3));
+                    break;
+                case 3:
+                    mImageView.setImageDrawable(getResources().getDrawable(R.drawable.intro4));
                     mStartBtn.setVisibility(View.VISIBLE);
                     break;
             }

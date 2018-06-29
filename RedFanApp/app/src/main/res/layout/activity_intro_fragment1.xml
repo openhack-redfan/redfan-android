@@ -13,14 +13,14 @@
 
     <Button
         android:id="@+id/startBtn"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_back"
         android:layout_gravity="bottom|center"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="130dp"
+        android:background="@drawable/btn_back"
         android:text="Start"
         android:textAllCaps="false"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorWhite"
+        android:visibility="gone" />
 
 </FrameLayout>
