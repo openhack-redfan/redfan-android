@@ -2,9 +2,12 @@ package redfen.redfanapp;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -46,10 +49,20 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
 
         listView = (ListView) findViewById(R.id.videoListView);
-        /*ArrayList<VideoItem> list = new ArrayList<>();
+        ArrayList<VideoItem> list = new ArrayList<>();
         list.add(new VideoItem("null", "hi", 10, 10));
         VideoListAdapter adapter = new VideoListAdapter(this, R.layout.listitem_video, list);
-        listView.setAdapter(adapter);*/
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent goToDetailComment = new Intent(getApplicationContext(),DetailActivity.class);
+                //해당 위치의 객체정보를 넘긴다.
+                startActivity(goToDetailComment);
+            }
+        });
+
+
         JSONObject mainObj = new JSONObject();
         try {
             mainObj.put("userId", Account.getInstance().getEmail());

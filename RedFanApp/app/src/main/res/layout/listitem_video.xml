@@ -59,7 +59,7 @@
                         android:background="@drawable/img_percent_ballon"
                         android:gravity="center"
                         android:text="0%"
-                        android:textColor="@color/colorBackOfTotalView"
+                        android:textColor="@color/colorProgressBarGood"
                         app:font="custom1"
                         tools:ignore="MissingPrefix" />
                 </LinearLayout>

@@ -4,23 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="redfen.redfanapp.RegisterActivity"
-    android:gravity="center">
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="40dp">
+        <ImageView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/titlebox"
+            android:scaleType="centerCrop"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/logo" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
+        android:layout_margin="30dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:orientation="vertical">
 
         <EditText
             android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
+            android:layout_marginBottom="10dp"
             android:hint="Email@gmail.com"
             android:inputType="textEmailAddress"
             android:padding="10dp"
@@ -30,8 +51,7 @@
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
+            android:layout_marginBottom="10dp"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
@@ -41,8 +61,7 @@
             android:id="@+id/inputPasswordCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="10"
+            android:layout_marginBottom="10dp"
             android:hint="Password Confirm"
             android:inputType="textPassword"
             android:padding="10dp"
@@ -53,7 +72,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:ems="10"
             android:hint="Name"
             android:inputType="textPersonName"
             android:padding="10dp"
@@ -64,7 +82,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:ems="10"
             android:hint="Channel URL"
             android:inputType="textUri"
             android:padding="10dp"

@@ -30,15 +30,14 @@ public class TotalViewFragment extends Fragment {
         this.data = data;
         return this;
     }
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        RelativeLayout relativeLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_total_view, container, false);
-        textView = (TextView) relativeLayout.findViewById(R.id.txtTotal);
-        textView.setText(data);
-        return relativeLayout;
+
+        View v = inflater.inflate(R.layout.fragment_total_view,null);
+
+        return v;
     }
+
 
 }

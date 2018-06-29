@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="80dp">
+        android:layout_marginBottom="60dp">
         <ImageView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
@@ -23,6 +23,11 @@
             android:src="@drawable/titlebox"
             android:scaleType="centerCrop"/>
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/logo" />
 
 
     <LinearLayout
