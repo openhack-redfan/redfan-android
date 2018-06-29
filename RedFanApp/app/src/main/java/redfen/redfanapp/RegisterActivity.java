@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if (jsonObject.get("result").equals("true")){
 
                             // 서버에 크롤링 해달라고 요청
-                            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24681/sign_up_init", "{\"channelUrl\":" + "\""+ email +"\"}", new RequestCallback() {
+                            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24681/sign_up_init", "{\"channelURL\":" + "\""+ email +"\"}", new RequestCallback() {
                                 @Override
                                 public void requestCallback(String result) {
                                     System.out.println(result);
