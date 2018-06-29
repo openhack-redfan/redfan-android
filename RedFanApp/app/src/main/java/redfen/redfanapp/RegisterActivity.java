@@ -1,11 +1,14 @@
 package redfen.redfanapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 /**
  * 회원가입을 위한 액티비티 입니다.
@@ -43,5 +46,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void onLoginClick(View view){
         this.finish();
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 }

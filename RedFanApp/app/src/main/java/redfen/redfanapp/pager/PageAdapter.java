@@ -1,8 +1,11 @@
 package redfen.redfanapp.pager;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 /**
  * 메인 뷰에 있는 페이지 슬라이더를 위한 어뎁터입니다.
@@ -41,4 +44,5 @@ public class PageAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return size;
     }
+
 }

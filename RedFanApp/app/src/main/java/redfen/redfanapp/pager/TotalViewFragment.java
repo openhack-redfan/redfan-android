@@ -1,5 +1,6 @@
 package redfen.redfanapp.pager;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import redfen.redfanapp.R;
 
@@ -37,4 +40,5 @@ public class TotalViewFragment extends Fragment {
         textView.setText(data);
         return relativeLayout;
     }
+
 }

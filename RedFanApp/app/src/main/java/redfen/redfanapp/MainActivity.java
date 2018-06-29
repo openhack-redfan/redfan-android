@@ -1,12 +1,16 @@
 package redfen.redfanapp;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import com.tsengvn.typekit.Typekit;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import redfen.redfanapp.pager.PageAdapter;
 import redfen.redfanapp.pager.TotalViewFragment;
@@ -21,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,4 +43,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
+
 }
