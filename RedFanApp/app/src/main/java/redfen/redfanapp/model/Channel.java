@@ -24,7 +24,7 @@ public class Channel {
 
     public String channelId;
     public String channelName;
-    public int channelThumbs;
+    public String channelThumbs;
     public String channelUrl;
     public String channelDetail;
     @SerializedName("channelSubscriberCount")
