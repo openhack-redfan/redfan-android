@@ -43,6 +43,11 @@ public class VideoListAdapter extends BaseAdapter {
         this.layout = layout;
     }
 
+    public void setItemList(ArrayList<VideoItem> itemList){
+        this.itemList = itemList;
+    }
+
+
     @Override
     public int getCount() {
         return itemList.size();

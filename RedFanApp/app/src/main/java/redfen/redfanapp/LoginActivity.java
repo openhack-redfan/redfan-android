@@ -24,6 +24,8 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import redfen.redfanapp.model.Account;
+import redfen.redfanapp.server_connector.RequestCallback;
+import redfen.redfanapp.server_connector.ServerConnector;
 
 /**
  * 로그인/ 회원가입하는 엑티비티입니다.
