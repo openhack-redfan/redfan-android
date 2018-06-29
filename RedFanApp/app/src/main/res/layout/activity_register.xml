@@ -9,51 +9,64 @@
     android:gravity="center">
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="40dp">
+        android:layout_gravity="center"
+        android:layout_margin="40dp"
+        android:orientation="vertical">
+
         <EditText
             android:id="@+id/inputEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="Email@gmail.com"
             android:inputType="textEmailAddress"
-            android:layout_marginBottom="20dp"
             android:padding="10dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/inputPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_marginBottom="20dp"
             android:padding="10dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/inputPasswordCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:ems="10"
             android:hint="Password Confirm"
             android:inputType="textPassword"
-            android:layout_marginBottom="20dp"
             android:padding="10dp"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/inputName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
         <EditText
             android:id="@+id/inputURL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Channel URL"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="10dp"
+            android:inputType="textUri"
             android:padding="10dp"
             android:textSize="16sp" />
 
@@ -63,14 +76,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_back"
             android:gravity="center"
             android:onClick="onRegisterClick"
-            android:background="@drawable/btn_back"
             android:text="Sign Up"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
-            android:textStyle="italic|bold"/>
+            android:textStyle="italic|bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,7 +98,7 @@
                 android:gravity="left"
                 android:text="Already have an account?"
                 android:textSize="12sp"
-                android:textStyle="italic|bold"/>
+                android:textStyle="italic|bold" />
 
             <TextView
                 android:id="@+id/btnLogin"
@@ -93,11 +106,11 @@
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 android:gravity="right"
-                android:text="Login Here"
                 android:paddingLeft="10dp"
+                android:text="Login Here"
                 android:textColor="@color/colorFontRed"
                 android:textSize="12sp"
-                android:textStyle="italic|bold"/>
+                android:textStyle="italic|bold" />
         </LinearLayout>
 
     </LinearLayout>
