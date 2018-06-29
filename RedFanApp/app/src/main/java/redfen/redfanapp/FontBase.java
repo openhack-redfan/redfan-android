@@ -20,6 +20,6 @@ public class FontBase extends Application {
                 .addItalic(Typekit.createFromAsset(this,"야놀자 야체 Bold.ttf"))
                 .addCustom1(Typekit.createFromAsset(this,"BMJUA_ttf.ttf"))
                 .addCustom2(Typekit.createFromAsset(this,"MyriadArabic-Bold.otf"))
-                .addCustom3(Typekit.createFromAsset(this,"NanumSquareRound.ttf"));
+                .addCustom3(Typekit.createFromAsset(this,"NanumSquareRoundR.ttf"));
     }
 }

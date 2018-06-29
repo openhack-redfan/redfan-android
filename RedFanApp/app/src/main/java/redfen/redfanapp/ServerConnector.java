@@ -41,9 +41,10 @@ public class ServerConnector {
             @Override
             public void run() {
                 URL endpoint = null;
+                HttpURLConnection conn = null;
                 try {
                     endpoint = new URL(url);
-                    HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
+                    conn = (HttpURLConnection) endpoint.openConnection();
                     if (conn.getResponseCode() == 200){ // 네트워크 연결에 성공했을 경우
 
                         // 인풋 가져옴
@@ -57,7 +58,6 @@ public class ServerConnector {
 
                         br.close();
                         is.close();
-
                         // callback 함수 호출
                         callback.requestCallback(sbr.toString());
                     }
@@ -65,6 +65,8 @@ public class ServerConnector {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
+                } finally {
+                    conn.disconnect();
                 }
 
             }
@@ -84,9 +86,10 @@ public class ServerConnector {
             @Override
             public void run() {
                 URL endpoint = null;
+                HttpURLConnection conn = null;
                 try {
                     endpoint = new URL(url);
-                    HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
+                    conn = (HttpURLConnection) endpoint.openConnection();
                     conn.setRequestProperty("Content-type", "application/json");
                     conn.setRequestMethod("POST");
                     conn.setDoOutput(true);
@@ -112,6 +115,8 @@ public class ServerConnector {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
+                } finally {
+                    conn.disconnect();
                 }
 
             }

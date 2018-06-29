@@ -6,11 +6,15 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import com.tsengvn.typekit.Typekit;
 import com.tsengvn.typekit.TypekitContextWrapper;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import redfen.redfanapp.pager.PageAdapter;
 import redfen.redfanapp.pager.TotalViewFragment;
@@ -32,15 +36,40 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (!Account.getInstance().isAuthorized()){
+            Toast.makeText(this, "보안 상에 문제가 생겼습니다. 다시 로그인 해주세요.", Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
 
         listView = (ListView) findViewById(R.id.videoListView);
-        ArrayList<VideoItem> list = new ArrayList<>();
+        /*ArrayList<VideoItem> list = new ArrayList<>();
         list.add(new VideoItem("null", "hi", 10, 10));
         VideoListAdapter adapter = new VideoListAdapter(this, R.layout.listitem_video, list);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
+        JSONObject mainObj = new JSONObject();
+        try {
+            mainObj.put("userId", Account.getInstance().getEmail());
+            System.out.println(mainObj.toString());
+            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/channel_info", mainObj.toString(), new RequestCallback() {
+                @Override
+                public void requestCallback(String result) {
+                    System.out.println("channel info::");
+                    System.out.println(result);
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Some Error Occurs. sign in again plz", Toast.LENGTH_SHORT).show();
+            this.finish();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Some Error Occurs. sign in again plz", Toast.LENGTH_SHORT).show();
+            this.finish();
+        }
+
 
     }
 
