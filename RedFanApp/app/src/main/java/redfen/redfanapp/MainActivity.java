@@ -94,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
                         JSONArray objArray = resultObj.getJSONArray("videos");
                         ArrayList<Video> videos = new ArrayList<>(); // 컨트롤러를 위한
                         ArrayList<VideoItem> videoItems = new ArrayList<>(); // 리스트뷰를 위한
+
                         for (int i = 0; i < objArray.length(); i++){
+
                             // 비디오 추가
                             System.out.println(i+ "::"+objArray.get(i).toString());
                             Video video = new  Gson().fromJson(objArray.get(i).toString(), Video.class);
