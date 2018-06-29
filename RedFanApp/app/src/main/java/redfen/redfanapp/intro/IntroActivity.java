@@ -39,6 +39,7 @@ public class IntroActivity extends AppCompatActivity {
             // 1번
             Intent goToMain = new Intent(IntroActivity.this, LoginActivity.class);
             startActivity(goToMain);
+            this.finish();
         }
 
 

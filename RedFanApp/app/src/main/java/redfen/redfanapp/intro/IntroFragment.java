@@ -66,7 +66,6 @@ public class IntroFragment extends Fragment {
         mStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 2번
                 SharedPreferences pref = getActivity().getSharedPreferences("load", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("isFirstLaunch", false);
@@ -74,6 +73,7 @@ public class IntroFragment extends Fragment {
 
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
         if(mImageView!=null) {
