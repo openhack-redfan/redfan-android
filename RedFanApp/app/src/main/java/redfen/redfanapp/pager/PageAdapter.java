@@ -5,7 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 /**
- * Created by start on 2018-06-29.
+ * 메인 뷰에 있는 페이지 슬라이더를 위한 어뎁터입니다.
+ * Created by JoMingyu on 2018-06-29.
+ * 참고: https://github.com/songmho/ViewPager
  */
 
 public class PageAdapter extends FragmentPagerAdapter {
