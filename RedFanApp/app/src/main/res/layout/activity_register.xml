@@ -21,8 +21,8 @@
             android:ems="10"
             android:hint="Email@gmail.com"
             android:inputType="textEmailAddress"
-            android:gravity="center"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:padding="10dp"/>
 
         <EditText
             android:id="@+id/inputPassword"
@@ -31,8 +31,8 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:gravity="center"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:padding="10dp"/>
 
         <EditText
             android:id="@+id/inputPasswordCheck"
@@ -41,8 +41,18 @@
             android:ems="10"
             android:hint="Password Confirm"
             android:inputType="textPassword"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="20dp"
+            android:padding="10dp"/>
+        <EditText
+            android:id="@+id/inputURL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Channel URL"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"/>
+
 
         <Button
             android:id="@+id/btnRegister"
@@ -51,7 +61,10 @@
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:onClick="onRegisterClick"
-            android:text="Sign Up" />
+            android:background="@drawable/btn_back"
+            android:text="Sign Up"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"/>
 
         <LinearLayout
             android:layout_width="match_parent"
