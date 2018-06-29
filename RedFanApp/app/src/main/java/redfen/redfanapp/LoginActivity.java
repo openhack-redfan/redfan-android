@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.tsengvn.typekit.Typekit;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 /**
@@ -48,8 +50,27 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void  onLoginClick(View view){
-        Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(goToMain);
+
+        ServerConnector connector = ServerConnector.getInstatnce();
+        JSONObject loginData = new JSONObject();
+        try {
+            loginData.put("userId", "test@test.com");
+            loginData.put("userPw", "test");
+            loginData.put("userName", "test");
+            loginData.put("channelUrl", "https://www.youtube.com/channel/UCFqvKeEMGrJfJPEOafy1v4Q");
+            System.out.println(loginData.toString());
+            connector.requestPost("http://13.209.8.64:24680/sign_up", loginData.toString(), new RequestCallback() {
+                @Override
+                public void requestCallback(String result) {
+                    System.out.println(result);
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        /*Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(goToMain);*/
     }
 
 
