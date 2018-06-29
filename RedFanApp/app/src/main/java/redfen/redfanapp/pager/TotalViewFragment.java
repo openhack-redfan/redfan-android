@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import java.util.concurrent.TimeoutException;
+
 import redfen.redfanapp.R;
 
 /**
