@@ -1,9 +1,12 @@
 package redfen.redfanapp.intro;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import redfen.redfanapp.LoginActivity;
 import redfen.redfanapp.R;
 
 /**
@@ -19,10 +22,31 @@ public class IntroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        mViewPager = (ViewPager)findViewById(R.id.viewpager);
+        SharedPreferences pref = getSharedPreferences("load", MODE_PRIVATE);
+        boolean isFirstLaunch = pref.getBoolean("isFirstLaunch", true);
 
-        mViewPager.setAdapter(new IntoAdapter(getSupportFragmentManager()));
+        // 처음 실행될 경우
+        // 1. 인트로를 보여준다.
+        // 2. SharedPreference 에서 isFirstLaunch를 false 로 수정한다.
+        if (isFirstLaunch){
+            // 1번
+            mViewPager = (ViewPager)findViewById(R.id.viewpager);
+            mViewPager.setAdapter(new IntoAdapter(getSupportFragmentManager()));
+            mViewPager.setPageTransformer(false, new IntroTransformer());
+            // 2번
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("isFirstLaunch", false);
+            editor.commit();
+        }
+        // 처음 실행되는 것이 아닌경우
+        // 1. 바로 로그인 액티비티로 넘어간다.
+        else {
+            // 1번
+            Intent goToMain = new Intent(IntroActivity.this, LoginActivity.class);
+            startActivity(goToMain);
+        }
 
-        mViewPager.setPageTransformer(false, new IntroTransformer());
+
+
     }
 }
