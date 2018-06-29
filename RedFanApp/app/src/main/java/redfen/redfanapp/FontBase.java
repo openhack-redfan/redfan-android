@@ -18,6 +18,6 @@ public class FontBase extends Application {
                 .addBoldItalic(Typekit.createFromAsset(this,"SourceHanSansKR-Regular.otf"))
                 .addBold(Typekit.createFromAsset(this,"SourceHanSansKR-Bold.otf"))
                 .addItalic(Typekit.createFromAsset(this,"야놀자 야체 Bold.ttf"))
-                .addCustom1(Typekit.createFromAsset(this,"야놀자 야체 Bold.ttf"));
+                .addCustom1(Typekit.createFromAsset(this,"BMJUA_ttf.ttf"));
     }
 }
