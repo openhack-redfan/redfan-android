@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -102,8 +103,6 @@ public class VideoListAdapter extends BaseAdapter {
         final int percentage = (int)((100.0*listviewitem.getLike())/(listviewitem.getLike() + listviewitem.getUnlike()));
         percent.setText(percentage+"%");
         final ImageView imgGap = (ImageView) convertView.findViewById(R.id.imgGap);
-
-
         ViewTreeObserver vt = progressBar.getViewTreeObserver();
         if(vt.isAlive()){
             vt.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -123,9 +122,9 @@ public class VideoListAdapter extends BaseAdapter {
                     progressBar.setProgress(percentage);
                 }
             });
+        }else{
+            Toast.makeText(convertView.getContext(),"Something wrong",Toast.LENGTH_SHORT).show();
         }
-
-
 
         return convertView;
     }
