@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.videoListView);
         ArrayList<VideoItem> list = new ArrayList<>();
-        list.add(new VideoItem());
+        list.add(new VideoItem("null", "hi", 10, 10));
         VideoListAdapter adapter = new VideoListAdapter(this, R.layout.listitem_video, list);
         listView.setAdapter(adapter);
 
