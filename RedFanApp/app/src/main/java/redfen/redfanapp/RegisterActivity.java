@@ -1,7 +1,8 @@
 package redfen.redfanapp;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void onRegisterClick(View view){
 
-        String email = inputEmail.getText().toString();
+        final String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
         String passwordcheck = inputPasswordCheck.getText().toString();
         String name = inputName.getText().toString();
@@ -90,7 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
             loginData.put("userName", name);
             loginData.put("channelUrl", channelurl);
             System.out.println(loginData.toString());
-            final AppCompatActivity mother = this;
             connector.requestPost("http://13.209.8.64:24680/sign_up", loginData.toString(), new RequestCallback() {
                 @Override
                 public void requestCallback(String result) {
@@ -98,13 +98,25 @@ public class RegisterActivity extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(result);
                         if (jsonObject.get("result").equals("true")){
-                            Toast.makeText(mother,"register success!",Toast.LENGTH_SHORT).show();
+
+                            // 서버에 크롤링 해달라고 요청
+                            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24681/sign_up_init", "{\"channelUrl\":" + "\""+ email +"\"}", new RequestCallback() {
+                                @Override
+                                public void requestCallback(String result) {
+                                    System.out.println(result);
+                                }
+                            });
                             finish();
+                        }
+                        else {
+                            Message msg = failHandler.obtainMessage();
+                            failHandler.sendMessage(msg);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
+                        Message msg = failHandler.obtainMessage();
+                        failHandler.sendMessage(msg);
                     }
-                    Toast.makeText(mother,"register fail!",Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (JSONException e) {
@@ -115,6 +127,21 @@ public class RegisterActivity extends AppCompatActivity {
     public void onLoginClick(View view){
         this.finish();
     }
+
+    // 스레드에서는 토스트와 같은 UI를 띄우는 것이 불가능하기 때문에
+    // 핸들러를 만들어 해결 토스트를 띄운다.
+    // 참조 : https://www.androidpub.com/861367
+    final AppCompatActivity mother = this;
+    private Handler successHandler = new Handler() {
+        public void handleMessage(Message msg){
+            Toast.makeText(mother, "register success!", Toast.LENGTH_SHORT).show();
+        }
+    };
+    private Handler failHandler = new Handler() {
+        public void handleMessage(Message msg){
+            Toast.makeText(mother, "register fail!", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     @Override
     protected void attachBaseContext(Context newBase) {
