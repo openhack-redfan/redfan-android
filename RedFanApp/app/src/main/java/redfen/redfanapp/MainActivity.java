@@ -16,6 +16,7 @@ import com.tsengvn.typekit.TypekitContextWrapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import redfen.redfanapp.model.Account;
 import redfen.redfanapp.pager.PageAdapter;
 import redfen.redfanapp.pager.TotalViewFragment;
 
