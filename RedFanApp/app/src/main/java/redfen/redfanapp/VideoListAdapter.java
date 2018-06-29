@@ -43,6 +43,15 @@ public class VideoListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+
+        if(convertView==null){
+            convertView=inflater.inflate(layout,parent,false);
+        }
+        VideoItem listviewitem = itemList.get(position);
+        /*mageView icon=(ImageView)convertView.findViewById(R.id.imageview);
+        icon.setImageResource(listviewitem.getIcon());
+        TextView name=(TextView)convertView.findViewById(R.id.textview);
+        name.setText(listviewitem.getName());*/
+        return convertView;
     }
 }

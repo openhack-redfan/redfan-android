@@ -4,6 +4,9 @@ import android.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 import redfen.redfanapp.pager.PageAdapter;
 import redfen.redfanapp.pager.TotalViewFragment;
@@ -17,6 +20,7 @@ import redfen.redfanapp.pager.TotalViewFragment;
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
+
+        listView = (ListView) findViewById(R.id.videoListView);
+        ArrayList<VideoItem> list = new ArrayList<>();
+        list.add(new VideoItem());
+        VideoListAdapter adapter = new VideoListAdapter(this, R.layout.listitem_video, list);
+        listView.setAdapter(adapter);
 
     }
 }
