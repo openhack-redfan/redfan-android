@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:id="@+id/comment_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="저는 이렇게 이렇게 해서 좋았어요^ㅇ^"

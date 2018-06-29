@@ -1,6 +1,5 @@
 package redfen.redfanapp;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
@@ -14,20 +13,19 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
-import com.tsengvn.typekit.Typekit;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import redfen.redfanapp.detail_comment.DetailActivity;
 import redfen.redfanapp.model.Account;
 import redfen.redfanapp.model.Channel;
 import redfen.redfanapp.model.Video;
 import redfen.redfanapp.model_controller.ChannelController;
 import redfen.redfanapp.model_controller.VideoController;
 import redfen.redfanapp.pager.PageAdapter;
-import redfen.redfanapp.pager.TotalViewFragment;
 import redfen.redfanapp.server_connector.RequestCallback;
 import redfen.redfanapp.server_connector.ServerConnector;
 
