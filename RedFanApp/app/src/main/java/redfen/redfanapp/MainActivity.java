@@ -28,6 +28,8 @@ import redfen.redfanapp.model_controller.ChannelController;
 import redfen.redfanapp.model_controller.VideoController;
 import redfen.redfanapp.pager.PageAdapter;
 import redfen.redfanapp.pager.TotalViewFragment;
+import redfen.redfanapp.server_connector.RequestCallback;
+import redfen.redfanapp.server_connector.ServerConnector;
 
 /**
  * 유투브 크리에이터의 전반적인 채널 상황이 나타나는 액티비티입니다.
