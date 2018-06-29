@@ -70,8 +70,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent goToDetailComment = new Intent(getApplicationContext(),DetailActivity.class);
+                goToDetailComment.putExtra("videoId", VideoController.getInstance().getVideo(i).videoId);
                 //해당 위치의 객체정보를 넘긴다.
                 startActivity(goToDetailComment);
+
             }
         });
 

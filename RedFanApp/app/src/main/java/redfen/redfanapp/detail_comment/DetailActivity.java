@@ -8,10 +8,16 @@ import android.widget.ListView;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import redfen.redfanapp.R;
 import redfen.redfanapp.model.Comment;
+import redfen.redfanapp.server_connector.ErrorCallback;
+import redfen.redfanapp.server_connector.RequestCallback;
+import redfen.redfanapp.server_connector.ServerConnector;
 
 /**
  * 동영상의 평가가 보여지는 액티비티입니다.
@@ -23,19 +29,44 @@ public class DetailActivity extends AppCompatActivity {
     private ListView goodCommentListview;
     private ListView badCommentListview;
     private CommentListAdapter commentListAdapter;
-    private ArrayList<Comment> commentsArray;
+    private ArrayList<Comment> goodCommentsArray;
+    private ArrayList<Comment> badCommentsArray;
+
+    private String videoId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        videoId = this.getIntent().getStringExtra("videoId");
         setContentView(R.layout.activity_detail);
         init();
+
+        try {
+            JSONObject reqObj = new JSONObject();
+            reqObj.put("videoId", videoId);
+            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/comments_info", reqObj.toString(), new RequestCallback() {
+                @Override
+                public void requestCallback(String result) {
+                    
+                }
+            }, new ErrorCallback() {
+                @Override
+                public void errCallback(int resultCode) {
+
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void init(){
         goodCommentListview = (ListView)findViewById(R.id.goodcommentlist);
         badCommentListview = (ListView)findViewById(R.id.badcommentlist);
 
+        goodCommentsArray = new ArrayList<>();
+        badCommentsArray = new ArrayList<>();
 
     }
 
