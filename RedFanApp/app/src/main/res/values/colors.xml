@@ -10,5 +10,9 @@
     <color name="colorManBlue">#1EAED7</color>
     <color name="colorWomanYellow">#F5E04D</color>
     <color name="colorGenderRatioGray">#A5A5A5</color>
-    <color name="colorBackOfTotalView">#FF7171</color>
+    <color name="colorBackOfGenderView">#FF7171</color>
+    <color name="colorBackOfTotalView">#FF784B</color>
+    <color name="colorBackOfFanView">#E25757</color>
+    <color name="colorProgressBarGood">#D65654</color>
+    <color name="colorProgressBarBad">#E9E9E9</color>
 </resources>
