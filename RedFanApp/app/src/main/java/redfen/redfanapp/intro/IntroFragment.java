@@ -72,12 +72,15 @@ public class IntroFragment extends Fragment {
             switch (mPage) {
                 //1p
                 case 0:
+                    mImageView.setImageDrawable(getResources().getDrawable(R.drawable.intro1));
                     break;
                 //2p
                 case 1:
+                    mImageView.setImageDrawable(getResources().getDrawable(R.drawable.intro2));
                     break;
                 //3p
                 default:
+                    mImageView.setImageDrawable(getResources().getDrawable(R.drawable.intro3));
                     mStartBtn.setVisibility(View.VISIBLE);
                     break;
             }
