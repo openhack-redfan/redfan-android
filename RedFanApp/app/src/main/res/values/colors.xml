@@ -3,4 +3,19 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorRed">#ED3737</color>
+    <color name="colorFontRed">#990000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlackFont">#333333</color>
+    <color name="colorManBlue">#755085</color>
+    <color name="colorWomanYellow">#5A8181</color>
+    <color name="colorGenderRatioGray">#A5A5A5</color>
+    <color name="colorBackOfChannelInfo">#ED3737</color>
+    <color name="colorBackOfTotalView">#FF784B</color>
+    <color name="colorBackOfGenderView">#FF7070</color>
+    <color name="colorBackOfFanView">#E25757</color>
+    <color name="colorProgressBarGood">#D65654</color>
+    <color name="colorProgressBarBad">#E9E9E9</color>
+    <color name="colorFontUpdate">#792020</color>
+    <color name="colorFontComment">#585858</color>
 </resources>
