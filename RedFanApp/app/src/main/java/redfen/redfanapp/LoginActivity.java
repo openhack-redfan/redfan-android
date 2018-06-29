@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void  onLoginClick(View view){
-        Intent goToMain = new Intent(LoginActivity.this, LoginActivity.class);
+        Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(goToMain);
     }
 
