@@ -6,4 +6,6 @@
     <color name="colorRed">#ED3737</color>
     <color name="colorFontRed">#990000</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <color name="colorBackOfTotalView">#E25757</color>
 </resources>

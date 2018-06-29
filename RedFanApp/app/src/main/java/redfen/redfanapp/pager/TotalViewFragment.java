@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import redfen.redfanapp.R;
 
@@ -15,9 +17,24 @@ import redfen.redfanapp.R;
 
 public class TotalViewFragment extends Fragment {
 
+    public TotalViewFragment(){
+        super();
+    }
+
+    TextView textView;
+    String data = "text";
+    public TotalViewFragment setData(String data){
+        this.data = data;
+        return this;
+    }
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_total_view, container, false);
+        RelativeLayout relativeLayout = (RelativeLayout) inflater.inflate(R.layout.fragment_total_view, container, false);
+        textView = (TextView) relativeLayout.findViewById(R.id.txtTotal);
+        textView.setText(data);
+        return relativeLayout;
     }
 }
