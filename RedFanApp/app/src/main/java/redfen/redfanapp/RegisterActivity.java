@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         String password = inputPassword.getText().toString();
         String passwordcheck = inputPasswordCheck.getText().toString();
         String name = inputName.getText().toString();
-        String channelurl = inputURL.getText().toString();
+        final String channelurl = inputURL.getText().toString();
 
         if (email == null ||email.length() < 4){
             Toast.makeText(this,"Your email is too short. (more than 4)",Toast.LENGTH_SHORT).show();
@@ -103,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if (jsonObject.get("result").equals("true")){
 
                             // 서버에 크롤링 해달라고 요청
-                            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24681/sign_up_init", "{\"channelURL\":" + "\""+ email +"\"}", new RequestCallback() {
+                            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24681/sign_up_init", "{\"channelURL\":" + "\""+ channelurl +"\"}", new RequestCallback() {
                                 @Override
                                 public void requestCallback(String result) {
                                     System.out.println(result);
