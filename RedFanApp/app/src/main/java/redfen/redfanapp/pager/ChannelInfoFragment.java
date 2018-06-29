@@ -61,12 +61,12 @@ public class ChannelInfoFragment extends Fragment implements IUseChannelData{
 
     @Override
     public void refreshChannelData(final Channel channel) {
-        txtCralwedDate.setText(channel.dateCrawled);
+        txtCralwedDate.setText(channel.dateCrawled.substring(0, 10));
         txtChannelName.setText(channel.channelName);
         txtChannelDesc.setText(channel.channelDetail);
-        txtOpenedDate.setText(channel.datePublished);
-        txtNumSubscriber.setText(channel.numOfSubscriber);
-        txtNumVideo.setText(channel.numOfVideo);
+        txtOpenedDate.setText(channel.datePublished.substring(0, 10));
+        txtNumSubscriber.setText(Integer.toString(channel.numOfSubscriber));
+        txtNumVideo.setText(Integer.toString(channel.numOfVideo));
 
         AsyncTask.execute(new Runnable() {
             @Override
