@@ -1,10 +1,10 @@
-package redfen.redfanapp;
+package redfen.redfanapp.intro;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import redfen.redfanapp.R;
 
 /**
  * Intro Activity
@@ -13,19 +13,16 @@ import android.os.Bundle;
  * Created By JoMingyu
  */
 public class IntroActivity extends AppCompatActivity {
-
+    private ViewPager mViewPager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(IntroActivity.this, LoginActivity.class));
-            }
-        },2000);
+        mViewPager = (ViewPager)findViewById(R.id.viewpager);
 
+        mViewPager.setAdapter(new IntoAdapter(getSupportFragmentManager()));
+
+        mViewPager.setPageTransformer(false, new IntroTransformer());
     }
 }

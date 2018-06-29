@@ -13,7 +13,7 @@
         <item name="colorControlActivated">@color/colorRed</item>
     </style>
     <style name="CustomWindowTitleBackground">
-        <item name="android:background">#ffffff</item>
+        <item name="android:background">@color/colorWhite</item>
     </style>
     <style name="NoTitleBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
