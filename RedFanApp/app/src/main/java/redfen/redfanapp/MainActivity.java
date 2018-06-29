@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         JSONObject mainObj = new JSONObject();
         try {
             mainObj.put("userId", Account.getInstance().getEmail());
-            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24681/channel_info", mainObj.toString(), new RequestCallback() {
+            System.out.println(mainObj.toString());
+            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/channel_info", mainObj.toString(), new RequestCallback() {
                 @Override
                 public void requestCallback(String result) {
                     System.out.println("channel info::");
@@ -60,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Some Error Occurs. sign in again plz", Toast.LENGTH_SHORT).show();
+            this.finish();
+        } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(this, "Some Error Occurs. sign in again plz", Toast.LENGTH_SHORT).show();
             this.finish();
