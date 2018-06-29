@@ -2,6 +2,8 @@ package redfen.redfanapp.server_connector;
 
 import android.os.AsyncTask;
 
+import org.apache.http.conn.ConnectTimeoutException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,6 +35,20 @@ public class ServerConnector {
      * @param callback Response 정보로 콜백을 준다.
      */
     public void requestGet(final String url, final RequestCallback callback){
+        requestGet(url, callback, new ErrorCallback() {
+            @Override
+            public void errCallback(int resultCode) {}
+        });
+    }
+    /**
+     * Url 주소와 RequestCallback 인터페이스를 구현하여 전달하면,
+     * 해당 주소에서 Response를 받아와 RequestCallback의 requestCallback 메소드의
+     * result 로 전달한다.
+     * @param url 요청할 페이지의 url 주소
+     * @param requestCallback Response 정보로 콜백을 준다.
+     * @param  errorCallback 에러가 나왔을 경우 콜백된다.
+     */
+    public void requestGet(final String url, final RequestCallback requestCallback, final ErrorCallback errorCallback){
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
@@ -57,12 +73,20 @@ public class ServerConnector {
                         br.close();
                         is.close();
                         // callback 함수 호출
-                        callback.requestCallback(sbr.toString());
+                        requestCallback.requestCallback(sbr.toString());
                     }
-                } catch (MalformedURLException e) {
+                    else  {
+                        errorCallback.errCallback(conn.getResponseCode());
+                    }
+                } catch(ConnectTimeoutException e){
                     e.printStackTrace();
+                    errorCallback.errCallback(ErrorCallback.ERR_CONECTION_TIMEOUT);
+                }catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    errorCallback.errCallback(ErrorCallback.ERR_MALFORM_URL);
                 } catch (IOException e) {
                     e.printStackTrace();
+                    errorCallback.errCallback(ErrorCallback.ERR_ETC);
                 } finally {
                     conn.disconnect();
                 }
@@ -80,6 +104,22 @@ public class ServerConnector {
      * @param callback Response 정보로 콜백을 한다.
      */
     public void requestPost(final String url, final String data, final RequestCallback callback){
+        requestPost(url, data, callback, new ErrorCallback() {
+            @Override
+            public void errCallback(int resultCode) {}
+        });
+    }
+
+    /**
+     * Url 주소와 RequestCallback 인터페이스를 구현하여 전달하면,
+     * 해당 주소에서 Response를 받아와 RequestCallback의 requestCallback 메소드의
+     * result 로 전달한다.
+     * @param url 요청할 페이지의 url 주소
+     * @param data POST 방식으로 전달할 data
+     * @param requestCallback Response 정보로 콜백을 한다.
+     * @param errorCallback 에러가 나왔을 경우 콜백을 해준다.
+     */
+    public void requestPost(final String url, final String data, final RequestCallback requestCallback, final ErrorCallback errorCallback){
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
@@ -109,12 +149,19 @@ public class ServerConnector {
                         is.close();
 
                         // callback 함수 호출
-                        callback.requestCallback(sbr.toString());
+                        requestCallback.requestCallback(sbr.toString());
+                    } else {
+                        errorCallback.errCallback(conn.getResponseCode());
                     }
-                } catch (MalformedURLException e) {
+                } catch(ConnectTimeoutException e){
                     e.printStackTrace();
+                    errorCallback.errCallback(ErrorCallback.ERR_CONECTION_TIMEOUT);
+                }catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    errorCallback.errCallback(ErrorCallback.ERR_MALFORM_URL);
                 } catch (IOException e) {
                     e.printStackTrace();
+                    errorCallback.errCallback(ErrorCallback.ERR_ETC);
                 } finally {
                     conn.disconnect();
                 }

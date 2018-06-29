@@ -7,6 +7,11 @@ package redfen.redfanapp.server_connector;
 
 public interface ErrorCallback {
 
+    public static final int
+        ERR_CONECTION_TIMEOUT = 1000,
+        ERR_MALFORM_URL = 1001,
+        ERR_ETC = 1002;
+
     public void errCallback(int resultCode);
 
 }
