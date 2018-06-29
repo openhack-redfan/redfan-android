@@ -51,26 +51,37 @@ public class LoginActivity extends AppCompatActivity {
 
     public void  onLoginClick(View view){
 
+        final String email = inputEmail.getText().toString();
+        String password = inputPassword.getText().toString();
+
         ServerConnector connector = ServerConnector.getInstatnce();
         JSONObject loginData = new JSONObject();
         try {
-            loginData.put("userId", "test@test.com");
-            loginData.put("userPw", "test");
-            loginData.put("userName", "test");
-            loginData.put("channelUrl", "https://www.youtube.com/channel/UCFqvKeEMGrJfJPEOafy1v4Q");
+            loginData.put("userId", email);
+            loginData.put("userPw", password);
             System.out.println(loginData.toString());
-            connector.requestPost("http://13.209.8.64:24680/sign_up", loginData.toString(), new RequestCallback() {
+            connector.requestPost("http://13.209.8.64:24680/sign_in", loginData.toString(), new RequestCallback() {
                 @Override
                 public void requestCallback(String result) {
                     System.out.println(result);
+                    try {
+                        JSONObject res = new JSONObject(result);
+                        if (res.get("result").equals("true")){
+                            Account.getInstance().setEmail(email);
+                            Account.getInstance().setAuthorized(true);
+                            Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(goToMain);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        /*Intent goToMain = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(goToMain);*/
+
     }
 
 
