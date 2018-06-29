@@ -39,7 +39,6 @@ public class VideoListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private ArrayList<VideoItem> itemList;
     private int layout;
-    private Bitmap downloadedBitmap;
     private ImageView thumbnail;
     public VideoListAdapter(Context context, int layout, ArrayList<VideoItem> itemList){
         this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -80,35 +79,39 @@ public class VideoListAdapter extends BaseAdapter {
         TextView percent = (TextView) convertView.findViewById(R.id.txtPercent);
         final ProgressBar progressBar = ((ProgressBar) convertView.findViewById(R.id.barPercent));
 
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL thumbUrl = new URL(listviewitem.getThumbnailUrl());
-                    HttpsURLConnection conn = (HttpsURLConnection) thumbUrl.openConnection();
-                    conn.setDoInput(true);
-                    conn.connect();
+        if (!listviewitem.isStartDownload()){
+            listviewitem.setStartDownload(true);
+            AsyncTask.execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        VideoItem downloadingItem = listviewitem;
+                        URL thumbUrl = new URL(downloadingItem.getThumbnailUrl());
+                        HttpsURLConnection conn = (HttpsURLConnection) thumbUrl.openConnection();
+                        conn.setDoInput(true);
+                        conn.connect();
 
-                    InputStream is = conn.getInputStream();
-                    Bitmap bitmap = BitmapFactory.decodeStream(is);
-                    is.close();
-                    downloadedBitmap = bitmap;
-                    Message changeMsg = changeHandler.obtainMessage();
-                    changeHandler.sendMessage(changeMsg);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        InputStream is = conn.getInputStream();
+                        Bitmap bitmap = BitmapFactory.decodeStream(is);
+                        is.close();
+
+                        downloadingItem.setDownloadBitmap(bitmap);
+
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        });
+            });
+        }
+
 
         title.setText(listviewitem.getTitle());
 
         final int percentage = (int)((100.0*listviewitem.getLike())/(listviewitem.getLike() + listviewitem.getUnlike()));
         percent.setText(percentage+"%");
         final ImageView imgGap = (ImageView) convertView.findViewById(R.id.imgGap);
-
 
         ViewTreeObserver vt = progressBar.getViewTreeObserver();
         if(vt.isAlive()){
@@ -131,15 +134,11 @@ public class VideoListAdapter extends BaseAdapter {
             });
         }
 
-
+        // 썸네일 그리기
+        if (listviewitem.isStartDownload() && listviewitem.getDownloadBitmap() != null){ // 다운로드를 시작했으며, 다운로드 받은 비트맵이  널이  아닐경우.
+            thumbnail.setImageBitmap(listviewitem.getDownloadBitmap());
+        }
 
         return convertView;
     }
-
-    private Handler changeHandler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            thumbnail.setImageBitmap(downloadedBitmap);
-        }
-    };
 }
