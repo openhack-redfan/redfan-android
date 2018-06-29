@@ -106,6 +106,9 @@ public class RegisterActivity extends AppCompatActivity {
                                     System.out.println(result);
                                 }
                             });
+
+                            Message msg = successHandler.obtainMessage();
+                            successHandler.sendMessage(msg);
                             finish();
                         }
                         else {
