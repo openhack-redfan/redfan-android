@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -42,7 +43,7 @@ public class ServerConnector {
                 URL endpoint = null;
                 try {
                     endpoint = new URL(url);
-                    HttpsURLConnection conn = (HttpsURLConnection) endpoint.openConnection();
+                    HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
                     if (conn.getResponseCode() == 200){ // 네트워크 연결에 성공했을 경우
 
                         // 인풋 가져옴
@@ -85,7 +86,8 @@ public class ServerConnector {
                 URL endpoint = null;
                 try {
                     endpoint = new URL(url);
-                    HttpsURLConnection conn = (HttpsURLConnection) endpoint.openConnection();
+                    HttpURLConnection conn = (HttpURLConnection) endpoint.openConnection();
+                    conn.setRequestProperty("Content-type", "application/json");
                     conn.setRequestMethod("POST");
                     conn.setDoOutput(true);
                     conn.getOutputStream().write(data.getBytes());
