@@ -13,13 +13,19 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import com.google.gson.Gson;
 import com.tsengvn.typekit.Typekit;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import redfen.redfanapp.model.Account;
+import redfen.redfanapp.model.Channel;
+import redfen.redfanapp.model.Video;
+import redfen.redfanapp.model_controller.ChannelController;
+import redfen.redfanapp.model_controller.VideoController;
 import redfen.redfanapp.pager.PageAdapter;
 import redfen.redfanapp.pager.TotalViewFragment;
 
@@ -33,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private ListView listView;
+    private VideoListAdapter adapter;
 
 
     @Override
@@ -51,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.videoListView);
         ArrayList<VideoItem> list = new ArrayList<>();
         list.add(new VideoItem("null", "hi", 10, 10));
-        VideoListAdapter adapter = new VideoListAdapter(this, R.layout.listitem_video, list);
+        adapter = new VideoListAdapter(this, R.layout.listitem_video, list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -67,11 +74,44 @@ public class MainActivity extends AppCompatActivity {
         try {
             mainObj.put("userId", Account.getInstance().getEmail());
             System.out.println(mainObj.toString());
-            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/channel_info", mainObj.toString(), new RequestCallback() {
+            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/channels_info", mainObj.toString(), new RequestCallback() {
                 @Override
                 public void requestCallback(String result) {
                     System.out.println("channel info::");
                     System.out.println(result);
+
+                    try {
+                        JSONObject resultObj = new JSONObject(result);
+
+                        // 채널 파싱
+                        Channel newChannel = new Gson().fromJson(resultObj.get("channel").toString(), Channel.class);
+                        ChannelController.getInstance().setChannel(newChannel);
+                        ChannelController.getInstance().setLoaded(true);
+
+                        // 비디오 파싱
+                        JSONArray objArray = resultObj.getJSONArray("videos");
+                        ArrayList<Video> videos = new ArrayList<>(); // 컨트롤러를 위한
+                        ArrayList<VideoItem> videoItems = new ArrayList<>(); // 리스트뷰를 위한
+                        for (int i = 0; i < resultObj.length(); i++){
+                            // 비디오 추가
+                            Video video = new  Gson().fromJson(objArray.get(i).toString(), Video.class);
+                            VideoController.getInstance().addVideo(video);
+                            videos.add(video);
+                            // 비디오 아이템 추가
+                            VideoItem videoItem = new VideoItem(video.videoTitle, video.videoThumbs, video.videoLikeCount, video.videoDislikeCount);
+                            videoItems.add(videoItem);
+                        }
+
+                        // 컨트롤러에 비디오들 추가
+                        VideoController.getInstance().setVideos(videos);
+                        // 리스트뷰에 비디오 추가
+                        adapter.setItemList(videoItems);
+                        listView.setAdapter(adapter);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             });
         } catch (JSONException e) {
