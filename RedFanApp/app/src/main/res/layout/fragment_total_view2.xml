@@ -18,9 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_gravity="center">
         <TextView
+            android:id="@+id/man_ratio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7"
@@ -39,6 +40,7 @@
             tools:ignore="MissingPrefix"
             android:padding="10dp"/>
         <TextView
+            android:id="@+id/woman_ratio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3"
@@ -66,12 +68,14 @@
                 android:text="Man"
                 android:gravity="right"/>
             <TextView
+                android:id="@+id/man_range_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
                 android:text="Range age : 13 ~ 29"
                 android:gravity="right"/>
             <TextView
+                android:id="@+id/man_mid_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
@@ -114,12 +118,14 @@
                 android:text="Woman"
                 android:gravity="left"/>
             <TextView
+                android:id="@+id/woman_range_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
                 android:text="Range age : 13 ~ 29"
                 android:gravity="left"/>
             <TextView
+                android:id="@+id/woman_mid_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
