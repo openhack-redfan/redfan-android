@@ -15,7 +15,7 @@ public class FontBase extends Application {
     public void onCreate() {
         super.onCreate();
         Typekit.getInstance()
-                .addNormal(Typekit.createFromAsset(this,"SourceHanSansKR-Regular.otf"))
+                .addBoldItalic(Typekit.createFromAsset(this,"SourceHanSansKR-Regular.otf"))
                 .addBold(Typekit.createFromAsset(this,"SourceHanSansKR-Bold.otf"))
                 .addItalic(Typekit.createFromAsset(this,"야놀자 야체 Bold.ttf"));
     }

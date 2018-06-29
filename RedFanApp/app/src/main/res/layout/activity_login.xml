@@ -41,7 +41,6 @@
             android:hint="Email@gmail.com"
             android:inputType="textEmailAddress"
             android:paddingLeft="10dp"
-            android:cursorVisible="false"
             android:textSize="16sp"/>
 
         <EditText
@@ -52,7 +51,6 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingLeft="10dp"
-            android:cursorVisible="false"
             android:textSize="16sp"/>
 
         <Button
@@ -67,7 +65,7 @@
             android:textColor="@color/colorWhite"
             android:layout_marginTop="15dp"
             android:textSize="16sp"
-            android:textStyle="normal"/>
+            android:textStyle="italic|bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:text="Forget Password? "
                 android:textColor="@color/colorFontRed"
-                android:textStyle="normal"
+                android:textStyle="italic|bold"
                 android:textSize="12sp"/>
 
             <TextView
@@ -87,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don't have an account?"
-                android:textStyle="normal"
+                android:textStyle="italic|bold"
                 android:textSize="12sp"/>
         </LinearLayout>
     </LinearLayout>
