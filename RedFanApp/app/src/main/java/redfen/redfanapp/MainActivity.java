@@ -1,7 +1,12 @@
 package redfen.redfanapp;
 
+import android.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import redfen.redfanapp.pager.PageAdapter;
+import redfen.redfanapp.pager.TotalViewFragment;
 
 /**
  * 유투브 크리에이터의 전반적인 채널 상황이 나타나는 액티비티입니다.
@@ -11,9 +16,16 @@ import android.os.Bundle;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new PageAdapter(getSupportFragmentManager()));
+
     }
 }
