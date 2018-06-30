@@ -46,10 +46,10 @@ public class DetailActivity extends AppCompatActivity {
 
         try {
             JSONObject reqObj = new JSONObject();
-            //reqObj.put("videoId", videoId);
-            reqObj.put("userId", "asdf@asdf.com");
-            reqObj.put("userPw", "asdf");
-            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/sign_up", reqObj.toString(), new RequestCallback() {
+            reqObj.put("videoId", videoId);
+            /*reqObj.put("userId", "asdf@asdf.com");
+            reqObj.put("userPw", "asdf");*/
+            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/comments_info", reqObj.toString(), new RequestCallback() {
                 @Override
                 public void requestCallback(String result) {
                     System.out.println(result);
