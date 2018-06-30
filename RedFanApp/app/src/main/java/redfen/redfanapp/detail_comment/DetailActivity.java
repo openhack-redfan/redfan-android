@@ -1,6 +1,8 @@
 package redfen.redfanapp.detail_comment;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -61,12 +63,12 @@ public class DetailActivity extends AppCompatActivity {
                         for (int index = 0; index < commentArr.length(); index++){
                             JSONObject commentObj = commentArr.getJSONObject(index);
                             Comment comment = new Gson().fromJson(commentObj.toString(), Comment.class);
-                            if (comment.equals("positive")){ // positive 인 경우
+                            if (comment.react.equals("positive")){ // positive 인 경우
                                 if (goodCommentsArray.size() < MAX_COMMENTS){
                                     goodCommentsArray.add(comment);
                                 }
                             }
-                            else if (comment.equals("negative")){ // negative 인 경우
+                            else if (comment.react.equals("negative")){ // negative 인 경우
                                 if (badCommentsArray.size() < MAX_COMMENTS){
                                     badCommentsArray.add(comment);
                                 }
@@ -78,10 +80,9 @@ public class DetailActivity extends AppCompatActivity {
                     }
 
                     // ▽다운로드 완료 후 디자인▽
-                    commentListAdapter = new CommentListAdapter(getApplicationContext(),R.layout.comment_row,goodCommentsArray);
-                    goodCommentListview.setAdapter(commentListAdapter);
-                    commentListAdapter = new CommentListAdapter(getApplicationContext(),R.layout.comment_row,badCommentsArray);
-                    badCommentListview.setAdapter(commentListAdapter);
+                    Message msg = changeHandler.obtainMessage();
+                    changeHandler.sendMessage(msg);
+
                 }
             }, new ErrorCallback() {
                 @Override
@@ -94,6 +95,18 @@ public class DetailActivity extends AppCompatActivity {
         }
 
     }
+
+    private Handler changeHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            System.out.println(goodCommentsArray.size() + " " + badCommentsArray.size() );
+            commentListAdapter = new CommentListAdapter(getApplicationContext(),R.layout.comment_row,goodCommentsArray);
+            goodCommentListview.setAdapter(commentListAdapter);
+            commentListAdapter = new CommentListAdapter(getApplicationContext(),R.layout.comment_row,badCommentsArray);
+            badCommentListview.setAdapter(commentListAdapter);
+        }
+    };
 
     public void init(){
         goodCommentListview = (ListView)findViewById(R.id.goodcommentlist);
