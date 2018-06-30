@@ -27,6 +27,9 @@ public class ServerConnector {
         return instatnce;
     }
 
+    public static final int CONNECTION_TIME = 100000;
+    public static final int READ_TIME = 100000;
+
     /**
      * Url 주소와 RequestCallback 인터페이스를 구현하여 전달하면,
      * 해당 주소에서 Response를 받아와 RequestCallback의 requestCallback 메소드의
@@ -57,8 +60,8 @@ public class ServerConnector {
                 try {
                     endpoint = new URL(url);
                     conn = (HttpURLConnection) endpoint.openConnection();
-                    conn.setConnectTimeout(5000);
-                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(CONNECTION_TIME);
+                    conn.setReadTimeout(READ_TIME);
                     if (conn.getResponseCode() == 200){ // 네트워크 연결에 성공했을 경우
 
                         // 인풋 가져옴
@@ -128,8 +131,8 @@ public class ServerConnector {
                 try {
                     endpoint = new URL(url);
                     conn = (HttpURLConnection) endpoint.openConnection();
-                    conn.setConnectTimeout(5000);
-                    conn.setReadTimeout(5000);
+                    conn.setConnectTimeout(CONNECTION_TIME);
+                    conn.setReadTimeout(READ_TIME);
                     conn.setRequestProperty("Content-type", "application/json");
                     conn.setRequestMethod("POST");
                     conn.setDoOutput(true);
