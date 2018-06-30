@@ -43,7 +43,7 @@ public class CommentListAdapter extends ArrayAdapter<Comment> {
         Comment comment = mData.get(position);
         TextView comment_text = (TextView)v.findViewById(R.id.comment_text);
         if(comment_text!=null){
-            comment_text.setText(comment.commentText);
+            comment_text.setText(comment.text);
         }
         return v;
     }
