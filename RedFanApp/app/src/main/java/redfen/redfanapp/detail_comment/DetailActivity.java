@@ -31,6 +31,7 @@ public class DetailActivity extends AppCompatActivity {
     private ListView goodCommentListview;
     private ListView badCommentListview;
     private CommentListAdapter commentListAdapter;
+    public static final int MAX_COMMENTS = 20;
     private ArrayList<Comment> goodCommentsArray;
     private ArrayList<Comment> badCommentsArray;
 
@@ -59,13 +60,16 @@ public class DetailActivity extends AppCompatActivity {
                         JSONArray  commentArr = resObj.getJSONArray("commentResults");
                         for (int index = 0; index < commentArr.length(); index++){
                             JSONObject commentObj = commentArr.getJSONObject(index);
-                            if (commentObj.getString("").equals("good")){
-                                if (goodCommentsArray.size() < 20){
-                                    goodCommentsArray.add(new Gson().fromJson(commen))
+                            Comment comment = new Gson().fromJson(commentObj.toString(), Comment.class);
+                            if (comment.equals("positive")){ // positive 인 경우
+                                if (goodCommentsArray.size() < MAX_COMMENTS){
+                                    goodCommentsArray.add(comment);
                                 }
                             }
-                            else if(commentObj.getString("").equals("bad")){
-
+                            else if (comment.equals("negative")){ // negative 인 경우
+                                if (badCommentsArray.size() < MAX_COMMENTS){
+                                    badCommentsArray.add(comment);
+                                }
                             }
                         }
 
