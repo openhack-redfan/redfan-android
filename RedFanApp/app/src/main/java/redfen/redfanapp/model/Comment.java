@@ -8,13 +8,8 @@ package redfen.redfanapp.model;
 
 public class Comment {
 
-    public String commentAuthorName;
-    public String commentAuthorThumbs;
-    public String commentCrawledAt;
-    public String commentId;
-    public int commentLikeCount;
-    public String commentPublishedAt;
-    public String commentText;
-    public String videoId;
+    public double score;
+    public String text;
+    public String react;
 
 }

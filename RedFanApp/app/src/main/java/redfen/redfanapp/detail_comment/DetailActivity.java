@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,14 +45,33 @@ public class DetailActivity extends AppCompatActivity {
 
         try {
             JSONObject reqObj = new JSONObject();
-            reqObj.put("videoId", videoId);
-            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/comments_info", reqObj.toString(), new RequestCallback() {
+            //reqObj.put("videoId", videoId);
+            reqObj.put("userId", "asdf@asdf.com");
+            reqObj.put("userPw", "asdf");
+            ServerConnector.getInstatnce().requestPost("http://13.209.8.64:24680/sign_up", reqObj.toString(), new RequestCallback() {
                 @Override
                 public void requestCallback(String result) {
                     System.out.println(result);
 
                     // ▽다운로드▽
+                    try {
+                        JSONObject resObj = new JSONObject(result);
+                        JSONArray  commentArr = resObj.getJSONArray("commentResults");
+                        for (int index = 0; index < commentArr.length(); index++){
+                            JSONObject commentObj = commentArr.getJSONObject(index);
+                            if (commentObj.getString("").equals("good")){
+                                if (goodCommentsArray.size() < 20){
+                                    goodCommentsArray.add(new Gson().fromJson(commen))
+                                }
+                            }
+                            else if(commentObj.getString("").equals("bad")){
 
+                            }
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
                     // ▽다운로드 완료 후 디자인▽
 

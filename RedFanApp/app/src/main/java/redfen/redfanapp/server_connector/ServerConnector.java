@@ -57,8 +57,8 @@ public class ServerConnector {
                 try {
                     endpoint = new URL(url);
                     conn = (HttpURLConnection) endpoint.openConnection();
-                    conn.setConnectTimeout(1500);
-                    conn.setReadTimeout(1500);
+                    conn.setConnectTimeout(5000);
+                    conn.setReadTimeout(5000);
                     if (conn.getResponseCode() == 200){ // 네트워크 연결에 성공했을 경우
 
                         // 인풋 가져옴
@@ -128,8 +128,8 @@ public class ServerConnector {
                 try {
                     endpoint = new URL(url);
                     conn = (HttpURLConnection) endpoint.openConnection();
-                    conn.setConnectTimeout(1500);
-                    conn.setReadTimeout(1500);
+                    conn.setConnectTimeout(5000);
+                    conn.setReadTimeout(5000);
                     conn.setRequestProperty("Content-type", "application/json");
                     conn.setRequestMethod("POST");
                     conn.setDoOutput(true);
