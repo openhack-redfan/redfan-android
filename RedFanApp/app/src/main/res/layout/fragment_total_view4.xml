@@ -53,6 +53,7 @@
             android:textColor="@color/colorWhite"
             app:font="custom3"
             tools:ignore="MissingPrefix"
+            android:textSize="11sp"
             android:text="Experence the world of google on our Official Youtube Channel."
             android:layout_margin="10dp"/>
 

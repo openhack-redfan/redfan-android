@@ -113,28 +113,29 @@ public class VideoListAdapter extends BaseAdapter {
         final int percentage = (int)((100.0*listviewitem.getLike())/(listviewitem.getLike() + listviewitem.getUnlike()));
         percent.setText(percentage+"%");
         final ImageView imgGap = (ImageView) convertView.findViewById(R.id.imgGap);
-        ViewTreeObserver vt = progressBar.getViewTreeObserver();
-        if(vt.isAlive()){
-            vt.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    progressBar.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    int default_gap = imgGap.getLayoutParams().width;
-                    int progress_width = progressBar.getWidth();
+        progressBar.setProgress(percentage);
 
-                    int changed_gap = default_gap + (int)(progress_width*(percentage/100.0));
-
-                    Log.v("width",default_gap+" "+progress_width+" "+changed_gap+" "+percentage);
-
-                    imgGap.getLayoutParams().width = changed_gap;
-                    imgGap.setLayoutParams(imgGap.getLayoutParams());
-
-                    progressBar.setProgress(percentage);
-                }
-            });
-        }else{
-            Toast.makeText(convertView.getContext(),"Something wrong",Toast.LENGTH_SHORT).show();
-        }
+//        ViewTreeObserver vt = progressBar.getViewTreeObserver();
+//        if(vt.isAlive()){
+//            vt.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//                @Override
+//                public void onGlobalLayout() {
+//                    int default_gap = imgGap.getLayoutParams().width;
+//                    int progress_width = progressBar.getWidth();
+//
+//                    int changed_gap = default_gap + (int)(progress_width*(percentage/100.0));
+//
+//                    Log.v("width",default_gap+" "+progress_width+" "+changed_gap+" "+percentage);
+//
+//                    imgGap.getLayoutParams().width = changed_gap;
+//                    imgGap.setLayoutParams(imgGap.getLayoutParams());
+//                    progressBar.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//
+//                }
+//            });
+//        }else{
+//            Toast.makeText(convertView.getContext(),"Something wrong",Toast.LENGTH_SHORT).show();
+//        }
 
         // 썸네일 그리기
         if (listviewitem.isStartDownload() && listviewitem.getDownloadBitmap() != null){ // 다운로드를 시작했으며, 다운로드 받은 비트맵이  널이  아닐경우.

@@ -12,8 +12,7 @@
         android:text="저는 이렇게 이렇게 해서 좋았어요^ㅇ^"
         android:padding="10dp"
         android:textColor="@color/colorFontComment"
-        android:textSize="17sp"
-        android:gravity="center"
+        android:textSize="14sp"
         app:font="custom3"
         tools:ignore="MissingPrefix" />
 </LinearLayout>
