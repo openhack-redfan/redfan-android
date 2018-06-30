@@ -78,7 +78,10 @@ public class DetailActivity extends AppCompatActivity {
                     }
 
                     // ▽다운로드 완료 후 디자인▽
-
+                    commentListAdapter = new CommentListAdapter(getApplicationContext(),R.layout.comment_row,goodCommentsArray);
+                    goodCommentListview.setAdapter(commentListAdapter);
+                    commentListAdapter = new CommentListAdapter(getApplicationContext(),R.layout.comment_row,badCommentsArray);
+                    badCommentListview.setAdapter(commentListAdapter);
                 }
             }, new ErrorCallback() {
                 @Override
